@@ -1,0 +1,15 @@
+/* Adicione estas classes ao seu arquivo CSS */
+
+.selected {
+  border-color: #4CAF50; /* Altere a cor da borda para verde */
+  box-shadow: 0 0 5px #4CAF50; /* Adicione uma sombra verde */
+}
+
+.selected img {
+  opacity: 0.8; /* Reduza ligeiramente a opacidade da imagem */
+}
+
+.selected button {
+  display: block; /* Certifique-se de que o botão de remoção seja visível */
+}
+

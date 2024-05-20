@@ -1,0 +1,26 @@
+<div class="container mx-auto p-2">
+  <h3 class="text-3xl font-bold text-center mb-6">Meus Baralhos</h3>
+  <button (click)="criarNovoBaralho()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-4">Criar Novo Baralho</button>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    <ng-container *ngFor="let baralho of baralhos; let i = index">
+      <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="bg-blue-500 text-white py-2 px-4">
+          <h3 class="text-lg font-bold flex-grow">{{ baralho.nome }}</h3>
+        </div>
+        <div class="p-4">
+          <ul class="grid grid-cols-1 gap-2">
+            <li *ngFor="let carta of baralho.cartas.slice(0, 1)" class="flex items-center gap-2">
+              <img [src]="carta.images.large" alt="{{ carta.name }}" class="w-full h-auto">
+            </li>
+          </ul>
+        </div>
+        <div class="bg-gray-100 py-2 px-4">
+          <button (click)="removerBaralho(i)" class="text-red-500 hover:text-red-700 font-bold mr-2">Remover</button>
+          <button (click)="editarBaralho(i)" class="text-blue-500 hover:text-blue-700 font-bold mr-2">Editar</button>
+          <button (click)="verDetalhes(i)" class="text-green-500 hover:text-green-700 font-bold">Ver Detalhes</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
