@@ -1,0 +1,45 @@
+<div class="container mx-auto p-2 bg-custom-blue shadow-md rounded-lg">
+  <h2 class="text-lg font-bold mb-2">{{ editMode ? 'Editar baralho' : 'Criar novo baralho' }}</h2>
+
+  <form (ngSubmit)="criarBaralho()" #form="ngForm" class="mb-4 space-y-2">
+
+    <div class="mb-2">
+      <label for="nome" class="block text-sm font-bold mb-1">Nome do Baralho:</label>
+      <igx-input-group>
+        <input igxInput type="text" id="nome" name="nome" [(ngModel)]="nomeBaralho"
+          class="w-full px-2 py-1 border rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-500">
+      </igx-input-group>
+    </div>
+
+    <div class="mb-2">
+      <h3 class="text-sm font-bold mb-1">Adicionar cartas</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2"> <!-- Alteração aqui -->
+        <div *ngFor="let carta of paginatedCards" class="p-1 border rounded-md shadow hover:shadow-lg"
+          (click)="toggleSelecaoCarta(carta)" [ngClass]="{ 'selected': carta.selected }">
+          <input type="checkbox" (change)="adicionarCarta(carta)" class="hidden">
+          <img [src]="carta.images.small" alt="{{ carta.name }}" class="w-full max-w-xs h-auto mb-1 rounded-lg">
+        </div>
+      </div>
+      <igx-paginator [totalRecords]="cards.length" [perPage]="12" (perPageChange)="onPerPageChange($event)"
+        (pageChange)="onPageChange($event)"></igx-paginator>
+    </div>
+
+    <div class="mb-2" *ngIf="cartasSelecionadas.length > 0">
+      <h3 class="text-sm font-bold mb-1">Cartas selecionadas</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+        <div *ngFor="let carta of cartasSelecionadas; let i = index"
+          class="p-1 border rounded-md shadow hover:shadow-lg">
+          <div class="flex items-center justify-between mb-1">
+            <button (click)="removerCarta(i)" class="text-blue-500 hover:text-blue-700 text-xs">Remover</button>
+          </div>
+          <img [src]="carta.images.small" alt="{{ carta.name }}" class="w-full max-w-xs h-auto mb-1 rounded-lg">
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" (click)="criarBaralho()"
+      class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 text-sm">
+      {{ editMode ? 'Atualizar baralho' : 'Criar baralho' }}
+    </button>
+  </form>
+</div>

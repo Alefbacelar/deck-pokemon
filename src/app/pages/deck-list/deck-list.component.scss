@@ -1,0 +1,15 @@
+.card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: calc(25% - 20px); /* Define a largura de cada cartão para ocupar 25% da largura total da lista */
+  margin: 10px; /* Adiciona espaço entre os cartões */
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; /* Garante que a largura e a altura incluam a borda e o preenchimento */
+}

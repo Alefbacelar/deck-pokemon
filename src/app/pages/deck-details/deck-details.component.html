@@ -1,0 +1,23 @@
+<div *ngIf="baralho" class="container mx-auto p-2 bg-white shadow-md rounded-lg">
+  <h2 class="text-2xl font-bold mb-4">Detalhes do Baralho: {{ baralho.nome }}</h2>
+  <button (click)="voltar()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-4">Meus baralhos</button>
+
+  <div class="mt-6">
+    <p class="text-lg"><strong>Número de Pokémon:</strong> {{ numPokemon }}</p>
+    <p class="text-lg"><strong>Número de Cartas de Treinador:</strong> {{ numTreinador }}</p>
+    <p class="text-lg"><strong>Tipos Únicos no Baralho:</strong> {{ tiposUnicos.size }}</p>
+    <ul class="list-disc list-inside">
+      <li *ngFor="let tipo of tiposUnicos">{{ tipo }}</li>
+    </ul>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-6">
+    <igx-card class="bg-gray-100 rounded-lg shadow-md p-2" *ngFor="let carta of baralho.cartas">
+      <img igxCardMedia [src]="carta.images.small" alt="{{ carta.name }}" class="w-full h-auto mb-2 rounded-lg">
+      <div igxCardContent>
+        <p class="text-sm font-bold">{{ carta.name }}</p>
+        <p class="text-xs text-gray-600">{{ carta.supertype }}</p>
+      </div>
+    </igx-card>
+  </div>
+</div>

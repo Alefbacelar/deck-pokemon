@@ -2,26 +2,58 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.
 
-## Development server
+## Descrição do Projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+O projeto visa criar uma aplicação web para permitir que os usuários criem, editem, visualizem e removam baralhos de Pokémon. Cada baralho pode conter um mínimo de 24 cartas e um máximo de 60 cartas.
 
-## Code scaffolding
+## Tecnologias Utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular: Framework de desenvolvimento front-end
+- Tailwind CSS: Framework de estilo CSS
+- Infragistics: Biblioteca de componentes de interface do usuário
+- PokéAPI: API para obtenção de informações sobre cartas de Pokémon
 
-## Build
+## Estrutura do Projeto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Componentes Angular:
 
-## Running unit tests
+- deck-list: Lista os baralhos existentes e fornece opções para criar, editar, visualizar e remover baralhos.
+- deck-new: Permite a criação de novos baralhos, adicionando cartas de Pokémon selecionadas e tambem
+permite a edição de baralhos existentes, incluindo a adição e remoção de cartas de Pokémon.
+- deck-details: Exibe detalhes de um baralho específico, incluindo o nome, número de cartas, tipos únicos e uma lista de cartas no baralho.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Serviços Angular:
 
-## Running end-to-end tests
+- deck-pokemon.service: Gerencia a obtenção, criação, edição e remoção de baralhos de Pokémon, além de interagir com a PokéAPI para obter informações sobre cartas.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Instruções de Instalação
 
-## Further help
+1. Clone o repositório do projeto do GitHub.
+2. Instale as dependências do projeto executando `npm install`.
+3. Inicie o servidor de desenvolvimento executando `ng serve`.
+4. Acesse a aplicação em [http://localhost:4200](http://localhost:4200).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Uso da Aplicação
+
+### Visualização de Baralhos:
+
+- Na página inicial, os baralhos existentes são listados em cards.
+- Cada card exibe o nome do baralho e uma amostra das cartas incluídas.
+
+### Criação de Novos Baralhos:
+
+- Clique no botão "Criar Novo Baralho" para acessar o formulário de criação.
+- Insira o nome do baralho e selecione as cartas desejadas.
+- Clique em "Criar Baralho" para concluir o processo.
+
+### Edição de Baralhos:
+
+- Clique no botão "Editar" no card de um baralho existente para acessar o formulário de edição.
+- Faça as alterações desejadas no nome ou nas cartas do baralho.
+- Clique em "Atualizar Baralho" para salvar as alterações.
+
+### Visualização de Detalhes do Baralho:
+
+- Clique no botão "Ver Detalhes" no card de um baralho existente para visualizar detalhes completos.
+- Os detalhes incluem o nome do baralho, o número de cartas, os tipos únicos e uma lista completa de cartas incluídas.
+
