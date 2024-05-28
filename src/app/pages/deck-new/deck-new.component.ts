@@ -15,7 +15,6 @@ export class DeckNewComponent implements OnInit {
   editIndex: number | null = null;
   paginatedCards: any[] = [];
   currentPage: number = 0;
-  perPage: number = 8;
   itemsPerPage: number = 12;
 
   constructor(
@@ -59,7 +58,7 @@ export class DeckNewComponent implements OnInit {
     for (const carta of this.cartasSelecionadas) {
       const nomeCarta = carta.name;
       const count = countMap.get(nomeCarta);
-      if (count !== undefined && count > 3) {
+      if (count !== undefined && count >= 4) {
         alert('Você só pode ter no máximo 4 cartas com o mesmo nome no baralho.');
         return;
       }
@@ -90,6 +89,12 @@ export class DeckNewComponent implements OnInit {
   }
 
   adicionarCarta(carta: any): void {
+    const nomeCarta = carta.name;
+    const count = this.cartasSelecionadas.filter(c => c.name === nomeCarta).length;
+    if (count >= 4) {
+      alert('Você só pode ter no máximo 4 cartas com o mesmo nome no baralho.');
+      return;
+    }
     this.cartasSelecionadas.push(carta);
   }
 
@@ -101,7 +106,6 @@ export class DeckNewComponent implements OnInit {
       this.paginatedCards[cartaIndex].selected = false;
     }
   }
-
 
   onPageChange(page: number): void {
     this.currentPage = page;
@@ -118,6 +122,12 @@ export class DeckNewComponent implements OnInit {
     if (index !== -1) {
       this.cartasSelecionadas.splice(index, 1);
     } else {
+      const nomeCarta = carta.name;
+      const count = this.cartasSelecionadas.filter(c => c.name === nomeCarta).length;
+      if (count >= 4) {
+        alert('Você só pode ter no máximo 4 cartas com o mesmo nome no baralho.');
+        return;
+      }
       this.cartasSelecionadas.push(carta);
     }
     carta.selected = !carta.selected;

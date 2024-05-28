@@ -23,8 +23,10 @@ export class DeckDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       const index = +params['index'];
       this.baralho = this.deckService.getBaralho(index);
-      this.contarCartas();
-      this.contarTipos();
+      if (this.baralho) {
+        this.contarCartas();
+        this.contarTipos();
+      }
     });
   }
 
@@ -53,7 +55,7 @@ export class DeckDetailsComponent implements OnInit {
     }
   }
 
-  voltar(){
-    this.router.navigate(['/list', ]);
+  voltar(): void {
+    this.router.navigate(['/list']);
   }
 }
