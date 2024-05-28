@@ -1,14 +1,22 @@
 <div *ngIf="baralho" class="container mx-auto p-2 bg-white shadow-md rounded-lg">
-  <h2 class="text-2xl font-bold mb-4">Detalhes do Baralho: {{ baralho.nome }}</h2>
+  <h2 class="text-3xl font-bold mb-4 text-center border-b-2 border-gray-200 pb-2">Detalhes do Baralho: {{ baralho.nome }}</h2>
   <button (click)="voltar()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-4">Meus baralhos</button>
 
   <div class="mt-6">
-    <p class="text-lg"><strong>Número de Pokémon:</strong> {{ numPokemon }}</p>
-    <p class="text-lg"><strong>Número de Cartas de Treinador:</strong> {{ numTreinador }}</p>
-    <p class="text-lg"><strong>Tipos Únicos no Baralho:</strong> {{ tiposUnicos.size }}</p>
-    <ul class="list-disc list-inside">
-      <li *ngFor="let tipo of tiposUnicos">{{ tipo }}</li>
-    </ul>
+    <p class="text-lg"><strong class="text-indigo-600">Total de Cartas no Baralho:</strong> <span class="text-lg font-semibold">{{ baralho.cartas.length }}</span></p>
+    <p class="text-lg"><strong class="text-indigo-600">Número de Pokémon:</strong> <span class="text-lg font-semibold">{{ numPokemon }}</span></p>
+    <p class="text-lg"><strong class="text-indigo-600">Número de Cartas de Treinador:</strong> <span class="text-lg font-semibold">{{ numTreinador }}</span></p>
+    <p class="text-lg"><strong class="text-indigo-600">Tipos Únicos no Baralho:</strong></p>
+    <div class="flex items-center space-x-4 mt-2">
+      <ng-container *ngFor="let tipo of tiposUnicos">
+        <div class="flex items-center">
+          <div class="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
+            <img [src]="getIconPath(tipo)" alt="{{ tipo }}" class="w-6 h-6">
+          </div>
+          <p class="text-lg text-blue-600 font-semibold ml-2">{{ tipo }}</p>
+        </div>
+      </ng-container>
+    </div>
   </div>
 
   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-6">

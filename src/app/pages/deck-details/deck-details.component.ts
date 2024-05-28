@@ -11,7 +11,7 @@ export class DeckDetailsComponent implements OnInit {
   baralho: any;
   numPokemon: number = 0;
   numTreinador: number = 0;
-  tiposUnicos: Set<string> = new Set();
+  tiposUnicos: string[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -23,39 +23,33 @@ export class DeckDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       const index = +params['index'];
       this.baralho = this.deckService.getBaralho(index);
-      if (this.baralho) {
-        this.contarCartas();
-        this.contarTipos();
-      }
+      this.contarCartas();
+      this.contarTipos();
     });
   }
 
   contarCartas(): void {
-    this.numPokemon = 0;
-    this.numTreinador = 0;
-
-    for (const carta of this.baralho.cartas) {
-      if (carta.supertype === 'Pokémon') {
-        this.numPokemon++;
-      } else if (carta.supertype === 'Trainer') {
-        this.numTreinador++;
-      }
-    }
+    this.numPokemon = this.baralho.cartas.filter((carta: { supertype: string; }) => carta.supertype === 'Pokémon').length;
+    this.numTreinador = this.baralho.cartas.filter((carta: { supertype: string; }) => carta.supertype === 'Trainer').length;
   }
 
   contarTipos(): void {
-    this.tiposUnicos.clear();
-
+    const tiposSet = new Set<string>();
     for (const carta of this.baralho.cartas) {
       if (carta.types) {
         for (const tipo of carta.types) {
-          this.tiposUnicos.add(tipo);
+          tiposSet.add(tipo);
         }
       }
     }
+    this.tiposUnicos = Array.from(tiposSet);
   }
 
   voltar(): void {
     this.router.navigate(['/list']);
+  }
+
+  getIconPath(tipo: string): string {
+    return `assets/images/icon.png`;
   }
 }

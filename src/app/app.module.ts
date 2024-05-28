@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeckListComponent } from './pages/deck-list/deck-list.component';
 import { DeckDetailsComponent } from './pages/deck-details/deck-details.component';
 import { DeckNewComponent } from './pages/deck-new/deck-new.component';
-import { IgxCardModule, IgxGridModule, IgxListModule } from 'igniteui-angular';
+import { IgxButtonModule, IgxCardModule, IgxGridModule, IgxListModule } from 'igniteui-angular';
 import { IgxInputGroupModule } from 'igniteui-angular';
 import { IgxPaginatorModule } from 'igniteui-angular';
 import { IgxCarouselModule } from 'igniteui-angular';
@@ -33,7 +33,8 @@ import { IgxCarouselModule } from 'igniteui-angular';
     IgxPaginatorModule,
     IgxCarouselModule,
     IgxCardModule,
-    IgxListModule
+    IgxListModule,
+    IgxButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

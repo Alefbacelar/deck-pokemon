@@ -1,8 +1,17 @@
 <div class="container mx-auto p-2 bg-custom-blue shadow-md rounded-lg">
   <h2 class="text-lg font-bold mb-2">{{ editMode ? 'Editar baralho' : 'Criar novo baralho' }}</h2>
 
-  <form (ngSubmit)="criarBaralho()" #form="ngForm" class="mb-4 space-y-2">
+  <!-- Seção de informações importantes -->
+  <div class="bg-red-100 rounded-md p-4 mb-4">
+    <p class="text-lg font-bold text-red-700">Antes de começar:</p>
+    <ul class="list-disc list-inside text-red-600">
+      <li>O baralho deve conter no mínimo 24 cartas e no máximo 60.</li>
+      <li>Só podem haver no máximo 4 cartas com o mesmo nome no baralho.</li>
+    </ul>
+  </div>
 
+  <!-- Formulário de criação ou edição de baralho -->
+  <form (ngSubmit)="criarBaralho()" #form="ngForm" class="mb-4 space-y-2">
     <div class="mb-2">
       <label for="nome" class="block text-sm font-bold mb-1">Nome do Baralho:</label>
       <igx-input-group>
